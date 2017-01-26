@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Defined Type: avahi::service
+  
+    &mdash; Documentation by YARD 0.9.7
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_defined_types::avahi::service";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_defined_type_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (a)</a> &raquo;
+    <span class='title'><span class='object_link'>Defined Types</span></span>
+     &raquo; 
+    <span class="title">avahi::service</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Defined Type: avahi::service</h1>
+<div class="box_info">
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/service.pp
+    </dd>
+  </dl>
+</div>
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>Statically define a service in Avahi.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Add static service definitions for SSH and SFTP</p>
+</div></p>
+      
+      <pre class="example code"><code>include ::dbus
+include ::avahi
+
+::avahi::service { &#39;ssh&#39;:
+  description       =&gt; &#39;%h&#39;,
+  replace_wildcards =&gt; true,
+  services          =&gt; [
+    {
+      &#39;type&#39; =&gt; &#39;_ssh._tcp&#39;,
+      &#39;port&#39; =&gt; 22,
+    },
+  ],
+}
+
+::avahi::service { &#39;sftp-ssh&#39;:
+  description       =&gt; &#39;%h&#39;,
+  replace_wildcards =&gt; true,
+  services          =&gt; [
+    {
+      &#39;type&#39; =&gt; &#39;_sftp-ssh._tcp&#39;,
+      &#39;port&#39; =&gt; 22,
+    },
+  ],
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Add a static service definition for NFS on IPv6 only</p>
+</div></p>
+      
+      <pre class="example code"><code>include ::dbus
+include ::avahi
+
+::avahi::service { &#39;nfs&#39;:
+  description       =&gt; &#39;NFS on %h&#39;,
+  replace_wildcards =&gt; true,
+  services          =&gt; [
+    {
+      &#39;type&#39;       =&gt; &#39;_nfs._tcp&#39;,
+      &#39;port&#39;       =&gt; 2049,
+      &#39;protocol&#39;   =&gt; &#39;ipv6&#39;,
+      &#39;txt-record&#39; =&gt; [
+        &#39;path=/export/some/path&#39;,
+      ],
+    },
+  ],
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Advertise an AirPrint printer</p>
+</div></p>
+      
+      <pre class="example code"><code>include ::dbus
+include ::avahi
+
+::avahi::service { &#39;printer&#39;:
+  description =&gt; &#39;An AirPrint printer&#39;,
+  services    =&gt; [
+    {
+      &#39;type&#39;       =&gt; &#39;_ipp._tcp&#39;,
+      &#39;subtype&#39;    =&gt; [
+        &#39;_universal._sub._ipp._tcp&#39;,
+      ],
+      &#39;port&#39;       =&gt; 631,
+      &#39;txt-record&#39; =&gt; [
+        &#39;txtver=1&#39;,
+        &#39;qtotal=1&#39;,
+        &#39;rp=printers/aPrinter&#39;,
+        &#39;ty=aPrinter&#39;,
+        &#39;adminurl=http://198.0.2.1:631/printers/aPrinter&#39;,
+        &#39;note=Office Laserjet 4100n&#39;,
+        &#39;priority=0&#39;,
+        &#39;product=(GPL Ghostscript)&#39;,
+        &#39;printer-state=3&#39;,
+        &#39;printer-type=0x801046&#39;,
+        &#39;Transparent=T&#39;,
+        &#39;Binary=T&#39;,
+        &#39;Fax=F&#39;,
+        &#39;Color=T&#39;,
+        &#39;Duplex=T&#39;,
+        &#39;Staple=F&#39;,
+        &#39;Copies=T&#39;,
+        &#39;Collate=F&#39;,
+        &#39;Punch=F&#39;,
+        &#39;Bind=F&#39;,
+        &#39;Sort=F&#39;,
+        &#39;Scan=F&#39;,
+        &#39;pdl=application/octet-stream,application/pdf,application/postscript,image/jpeg,image/png,image/urf&#39;,
+        &#39;URF=W8,SRGB24,CP1,RS600&#39;,
+      ],
+    },
+  ],
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>description</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The description of the service, any occurence of <code>%h</code> will be
+replaced with the hostname if <code>$replace_wildcards</code> is set to
+<code>true</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>services</span>
+      
+      
+        <span class='type'>(<tt>Array[Avahi::Record, 1]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array of hashes which must contain <code>type</code> and
+<code>port</code> keys and optionally <code>protocol</code>,
+<code>subtype</code>, <code>domain-name</code>, <code>host-name</code> and
+<code>txt-record</code> keys.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>replace_wildcards</span>
+      
+      
+        <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>undef</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether any occurence of <code>%h</code> is replaced with the hosname.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>$title</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the service. It is used to construct the filename, i.e.
+<code>${conf_dir}/services/${service}.service</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../puppet_classes/avahi.html" title="puppet_classes::avahi (puppet_class)">::avahi</a></span></li>
+    
+      <li><a href="https://linux.die.net/man/5/avahi.service" target="_parent" title="avahi.service(5)">avahi.service(5)</a></li>
+    
+  </ul>
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/service.pp', line 103</span>
+
+define avahi::service (
+  String                  $description,
+  Array[Avahi::Record, 1] $services,
+  Optional[Boolean]       $replace_wildcards = undef,
+  String                  $service           = $title,
+) {
+
+  if ! defined(Class[&#39;::avahi&#39;]) {
+    fail(&#39;You must include the avahi base class before using any avahi defined resources&#39;)
+  }
+
+  $validate_cmd = $::avahi::validate ? {
+    true    =&gt; &quot;${::avahi::xmllint} --path ${::avahi::dtd_dir} --valid --noout %&quot;,
+    default =&gt; undef,
+  }
+
+  file { &quot;${::avahi::conf_dir}/services/${service}.service&quot;:
+    ensure       =&gt; file,
+    owner        =&gt; 0,
+    group        =&gt; 0,
+    mode         =&gt; &#39;0644&#39;,
+    content      =&gt; template(&quot;${module_name}/service.erb&quot;),
+    validate_cmd =&gt; $validate_cmd,
+  }
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+  Generated on Thu Jan 26 20:18:56 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.7 (ruby-2.2.5).
+</div>
+
+    </div>
+  </body>
+</html>
