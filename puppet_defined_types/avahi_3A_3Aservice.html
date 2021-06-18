@@ -6,15 +6,15 @@
 <title>
   Defined Type: avahi::service
   
-    &mdash; Documentation by YARD 0.9.7
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_defined_types::avahi::service";
   relpath = '../';
 </script>
@@ -68,6 +68,7 @@
     </dd>
   </dl>
 </div>
+
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
@@ -76,6 +77,8 @@
 
   </div>
 </div>
+
+
 <div class="tags">
   
   <div class="examples">
@@ -86,10 +89,10 @@
 <p>Add static service definitions for SSH and SFTP</p>
 </div></p>
       
-      <pre class="example code"><code>include ::dbus
-include ::avahi
+      <pre class="example code"><code>include dbus
+include avahi
 
-::avahi::service { &#39;ssh&#39;:
+avahi::service { &#39;ssh&#39;:
   description       =&gt; &#39;%h&#39;,
   replace_wildcards =&gt; true,
   services          =&gt; [
@@ -100,7 +103,7 @@ include ::avahi
   ],
 }
 
-::avahi::service { &#39;sftp-ssh&#39;:
+avahi::service { &#39;sftp-ssh&#39;:
   description       =&gt; &#39;%h&#39;,
   replace_wildcards =&gt; true,
   services          =&gt; [
@@ -116,10 +119,10 @@ include ::avahi
 <p>Add a static service definition for NFS on IPv6 only</p>
 </div></p>
       
-      <pre class="example code"><code>include ::dbus
-include ::avahi
+      <pre class="example code"><code>include dbus
+include avahi
 
-::avahi::service { &#39;nfs&#39;:
+avahi::service { &#39;nfs&#39;:
   description       =&gt; &#39;NFS on %h&#39;,
   replace_wildcards =&gt; true,
   services          =&gt; [
@@ -139,10 +142,10 @@ include ::avahi
 <p>Advertise an AirPrint printer</p>
 </div></p>
       
-      <pre class="example code"><code>include ::dbus
-include ::avahi
+      <pre class="example code"><code>include dbus
+include avahi
 
-::avahi::service { &#39;printer&#39;:
+avahi::service { &#39;printer&#39;:
   description =&gt; &#39;An AirPrint printer&#39;,
   services    =&gt; [
     {
@@ -196,9 +199,7 @@ include ::avahi
       
         &mdash;
         <div class='inline'>
-<p>The description of the service, any occurence of <code>%h</code> will be
-replaced with the hostname if <code>$replace_wildcards</code> is set to
-<code>true</code>.</p>
+<p>The description of the service, any occurence of <code>%h</code> will be replaced with the hostname if <code>$replace_wildcards</code> is set to <code>true</code>.</p>
 </div>
       
     </li>
@@ -214,10 +215,7 @@ replaced with the hostname if <code>$replace_wildcards</code> is set to
       
         &mdash;
         <div class='inline'>
-<p>An array of hashes which must contain <code>type</code> and
-<code>port</code> keys and optionally <code>protocol</code>,
-<code>subtype</code>, <code>domain-name</code>, <code>host-name</code> and
-<code>txt-record</code> keys.</p>
+<p>An array of hashes which must contain <code>type</code> and <code>port</code> keys and optionally <code>protocol</code>, <code>subtype</code>, <code>domain-name</code>, <code>host-name</code> and <code>txt-record</code> keys.</p>
 </div>
       
     </li>
@@ -253,8 +251,7 @@ replaced with the hostname if <code>$replace_wildcards</code> is set to
       
         &mdash;
         <div class='inline'>
-<p>The name of the service. It is used to construct the filename, i.e.
-<code>${conf_dir}/services/${service}.service</code>.</p>
+<p>The name of the service. It is used to construct the filename, i.e. <code>${conf_dir}/services/${service}.service</code>.</p>
 </div>
       
     </li>
@@ -262,10 +259,11 @@ replaced with the hostname if <code>$replace_wildcards</code> is set to
 </ul>
 
 
+
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="../puppet_classes/avahi.html" title="puppet_classes::avahi (puppet_class)">::avahi</a></span></li>
+      <li><span class='object_link'><a href="../puppet_classes/avahi.html" title="puppet_classes::avahi (puppet_class)">avahi</a></span></li>
     
       <li><a href="https://linux.die.net/man/5/avahi.service" target="_parent" title="avahi.service(5)">avahi.service(5)</a></li>
     
@@ -300,9 +298,7 @@ replaced with the hostname if <code>$replace_wildcards</code> is set to
 122
 123
 124
-125
-126
-127</pre>
+125</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/service.pp', line 103</span>
@@ -314,16 +310,14 @@ define avahi::service (
   String                  $service           = $title,
 ) {
 
-  if ! defined(Class[&#39;::avahi&#39;]) {
-    fail(&#39;You must include the avahi base class before using any avahi defined resources&#39;)
-  }
+  include avahi
 
-  $validate_cmd = $::avahi::validate ? {
-    true    =&gt; &quot;${::avahi::xmllint} --path ${::avahi::dtd_dir} --valid --noout %&quot;,
+  $validate_cmd = $avahi::validate ? {
+    true    =&gt; &quot;${avahi::xmllint} --path ${avahi::dtd_dir} --valid --noout %&quot;,
     default =&gt; undef,
   }
 
-  file { &quot;${::avahi::conf_dir}/services/${service}.service&quot;:
+  file { &quot;${avahi::conf_dir}/services/${service}.service&quot;:
     ensure       =&gt; file,
     owner        =&gt; 0,
     group        =&gt; 0,
@@ -339,9 +333,7 @@ define avahi::service (
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 26 20:18:56 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.7 (ruby-2.2.5).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>

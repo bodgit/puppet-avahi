@@ -6,15 +6,15 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.7
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "";
   relpath = '';
 </script>
@@ -60,16 +60,7 @@
       <div id="content"><div id='filecontents'>
 <h1 id="label-avahi">avahi</h1>
 
-<p>Tested with Travis CI</p>
-
-<p><a href="https://travis-ci.org/bodgit/puppet-avahi"><img
-src="https://travis-ci.org/bodgit/puppet-avahi.svg?branch=master"></a> <a
-href="https://coveralls.io/github/bodgit/puppet-avahi?branch=master"><img
-src="https://coveralls.io/repos/bodgit/puppet-avahi/badge.svg?branch=master&service=github"></a>
-<a href="https://forge.puppetlabs.com/bodgit/avahi"><img
-src="http://img.shields.io/puppetforge/v/bodgit/avahi.svg"></a> <a
-href="https://gemnasium.com/bodgit/puppet-avahi"><img
-src="https://gemnasium.com/bodgit/puppet-avahi.svg"></a></p>
+<p><a href="https://github.com/bodgit/puppet-avahi/actions?query=workflow%3ATest"><img src="https://img.shields.io/github/workflow/status/bodgit/puppet-avahi/Test"></a> <a href="https://codecov.io/gh/bodgit/puppet-avahi"><img src="https://img.shields.io/codecov/c/github/bodgit/puppet-avahi"></a> <a href="https://forge.puppetlabs.com/bodgit/avahi"><img src="http://img.shields.io/puppetforge/v/bodgit/avahi"></a> <a href="https://forge.puppetlabs.com/bodgit/avahi"><img src="https://img.shields.io/puppetforge/dt/bodgit/avahi"></a> <a href="https://forge.puppetlabs.com/bodgit/avahi"><img src="https://img.shields.io/puppetforge/pdk-version/bodgit/avahi"></a></p>
 
 <h4 id="label-Table+of+Contents">Table of Contents</h4>
 <ol><li>
@@ -80,24 +71,20 @@ src="https://gemnasium.com/bodgit/puppet-avahi.svg"></a></p>
 <p><a href="#beginning-with-avahi">Beginning with avahi</a></p>
 </li></ul>
 </li><li>
-<p><a href="#usage">Usage - Configuration options and additional
-functionality</a></p>
+<p><a href="#usage">Usage - Configuration options and additional functionality</a></p>
 </li><li>
-<p><a href="#reference">Reference - An under-the-hood peek at what the module
-is doing and how</a></p>
+<p><a href="#reference">Reference - An under-the-hood peek at what the module is doing and how</a></p>
 </li><li>
 <p><a href="#limitations">Limitations - OS compatibility, etc.</a></p>
 </li><li>
-<p><a href="#development">Development - Guide for contributing to the
-module</a></p>
+<p><a href="#development">Development - Guide for contributing to the module</a></p>
 </li></ol>
 
 <h2 id="label-Description">Description</h2>
 
 <p>This module manages Avahi for mDNS/DNS-SD services.</p>
 
-<p>RHEL/CentOS, Ubuntu, Debian and OpenBSD are supported using Puppet 4.4.0 or
-later.</p>
+<p>RHEL/CentOS, Ubuntu, Debian and OpenBSD are supported using Puppet 5 or later.</p>
 
 <h2 id="label-Setup">Setup</h2>
 
@@ -105,17 +92,18 @@ later.</p>
 
 <p>In the very simplest case, you can just include the following:</p>
 
-<pre class="code ruby"><code class="ruby">include ::dbus
-include ::avahi</code></pre>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_dbus'>dbus</span>
+<span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_avahi'>avahi</span>
+</code></pre>
 
 <h2 id="label-Usage">Usage</h2>
 
 <p>Install Avahi and add static service definitions for SSH and SFTP:</p>
 
-<pre class="code ruby"><code class="ruby">include ::dbus
-include ::avahi
+<pre class="code ruby"><code class="ruby">include dbus
+include avahi
 
-::avahi::service { &#39;ssh&#39;:
+avahi::service { &#39;ssh&#39;:
   description       =&gt; &#39;%h&#39;,
   replace_wildcards =&gt; true,
   services          =&gt; [
@@ -126,7 +114,7 @@ include ::avahi
   ],
 }
 
-::avahi::service { &#39;sftp-ssh&#39;:
+avahi::service { &#39;sftp-ssh&#39;:
   description       =&gt; &#39;%h&#39;,
   replace_wildcards =&gt; true,
   services          =&gt; [
@@ -135,58 +123,52 @@ include ::avahi
       &#39;port&#39; =&gt; 22,
     },
   ],
-}</code></pre>
+}
+</code></pre>
 
-<p>Install Avahi and add a static host entry on behalf of an mDNS-unaware
-router:</p>
+<p>Install Avahi and add a static host entry on behalf of an mDNS-unaware router:</p>
 
-<pre class="code ruby"><code class="ruby">include ::dbus
-include ::avahi
+<pre class="code ruby"><code class="ruby">include dbus
+include avahi
 
 avahi_host { &#39;router.local&#39;:
   ensure =&gt; present,
   ip     =&gt; &#39;192.0.2.1&#39;,
-}</code></pre>
+}
+</code></pre>
 
 <h2 id="label-Reference">Reference</h2>
 
-<p>The reference documentation is generated with <a
-href="https://github.com/puppetlabs/puppet-strings">puppet-strings</a> and
-the latest version of the documentation is hosted at <a
-href="https://bodgit.github.io/puppet-avahi/">bodgit.github.io/puppet-avahi/</a>.</p>
+<p>The reference documentation is generated with <a href="https://github.com/puppetlabs/puppet-strings">puppet-strings</a> and the latest version of the documentation is hosted at <a href="https://bodgit.github.io/puppet-avahi/">bodgit.github.io/puppet-avahi/</a> and available also in the <a href="https://github.com/bodgit/puppet-avahi/blob/main/REFERENCE.md">REFERENCE.md</a>.</p>
 
 <h2 id="label-Limitations">Limitations</h2>
 
-<p>This module has been built on and tested against Puppet 4.4.0 and higher.</p>
+<p>This module has been built on and tested against Puppet 5 and higher.</p>
 
 <p>The module has been tested on:</p>
 <ul><li>
-<p>RedHat Enterprise Linux 6/7</p>
+<p>Red Hat/CentOS Enterprise Linux 6/7/8</p>
 </li><li>
-<p>Ubuntu 14.04/16.04</p>
+<p>Ubuntu 16.04/18.04/20.04</p>
 </li><li>
-<p>Debian 7/8</p>
+<p>Debian 9/10</p>
 </li><li>
-<p>OpenBSD 6.0</p>
+<p>OpenBSD 6.9</p>
 </li></ul>
 
 <h2 id="label-Development">Development</h2>
 
-<p>The module has both <a href="http://rspec-puppet.com">rspec-puppet</a> and
-<a href="https://github.com/puppetlabs/beaker-rspec">beaker-rspec</a>
-tests. Run them with:</p>
+<p>The module relies on <a href="https://puppet.com/docs/pdk/1.x/pdk.html">PDK</a> and has both <a href="http://rspec-puppet.com">rspec-puppet</a> and <a href="https://github.com/puppetlabs/puppet_litmus">Litmus</a> tests. Run them with:</p>
 
-<pre class="code ruby"><code class="ruby">$ bundle exec rake test
-$ PUPPET_INSTALL_TYPE=agent PUPPET_INSTALL_VERSION=x.y.z bundle exec rake beaker:&lt;nodeset&gt;</code></pre>
+<pre class="code ruby"><code class="ruby">$ bundle exec rake spec
+$ bundle exec rake litmus:*
+</code></pre>
 
-<p>Please log issues or pull requests at <a
-href="https://github.com/bodgit/puppet-avahi">github</a>.</p>
+<p>Please log issues or pull requests at <a href="https://github.com/bodgit/puppet-avahi">github</a>.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Thu Jan 26 20:18:56 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.7 (ruby-2.2.5).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>

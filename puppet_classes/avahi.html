@@ -6,15 +6,15 @@
 <title>
   Puppet Class: avahi
   
-    &mdash; Documentation by YARD 0.9.7
+    &mdash; Documentation by YARD 0.9.26
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "puppet_classes::avahi";
   relpath = '../';
 </script>
@@ -64,7 +64,7 @@
   
   <dl>
     <dt>Inherits:</dt>
-    <dd>::avahi::params</dd>
+    <dd><span class='object_link'>avahi::params</span></dd>
   </dl>
   
   
@@ -75,6 +75,7 @@
     </dd>
   </dl>
 </div>
+
 <h2>Overview</h2>
 <div class="docstring">
   <div class="discussion">
@@ -83,6 +84,8 @@
 
   </div>
 </div>
+
+
 <div class="tags">
   
   <div class="examples">
@@ -93,8 +96,8 @@
 <p>Declaring the class</p>
 </div></p>
       
-      <pre class="example code"><code>include ::dbus
-include ::avahi</code></pre>
+      <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_dbus'>dbus</span>
+<span class='id identifier rubyid_include'>include</span> <span class='id identifier rubyid_avahi'>avahi</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -108,7 +111,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::conf_dir</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::conf_dir</tt>)</em>
       
       
         &mdash;
@@ -126,7 +129,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::dtd_dir</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::dtd_dir</tt>)</em>
       
       
         &mdash;
@@ -144,7 +147,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::group</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::group</tt>)</em>
       
       
         &mdash;
@@ -162,7 +165,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::package_name</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::package_name</tt>)</em>
       
       
         &mdash;
@@ -180,7 +183,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::policy_group</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::policy_group</tt>)</em>
       
       
         &mdash;
@@ -198,7 +201,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::service_name</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::service_name</tt>)</em>
       
       
         &mdash;
@@ -216,7 +219,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::user</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::user</tt>)</em>
       
       
         &mdash;
@@ -234,7 +237,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::validate</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::validate</tt>)</em>
       
       
         &mdash;
@@ -252,7 +255,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::xmllint</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::xmllint</tt>)</em>
       
       
         &mdash;
@@ -324,7 +327,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Optional[Array[Bodgitlib::Domain, 1]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>undef</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::browse_domains</tt>)</em>
       
       
         &mdash;
@@ -522,7 +525,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::enable_wide_area</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::enable_wide_area</tt>)</em>
       
       
         &mdash;
@@ -645,7 +648,7 @@ include ::avahi</code></pre>
         <span class='name'>publish_dns_servers</span>
       
       
-        <span class='type'>(<tt>Optional[Array[IP::Address::NoSubnet, 1]]</tt>)</span>
+        <span class='type'>(<tt>Optional[Array[Stdlib::IP::Address::NoSubnet, 1]]</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>undef</tt>)</em>
@@ -684,7 +687,7 @@ include ::avahi</code></pre>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::publish_hinfo</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::publish_hinfo</tt>)</em>
       
       
         &mdash;
@@ -707,8 +710,7 @@ include ::avahi</code></pre>
       
         &mdash;
         <div class='inline'>
-<p>Whether to publish the DNS servers listed in <code>/etc/resolv.conf</code>
-in addition to any listed in <code>publish_dns_servers</code>.</p>
+<p>Whether to publish the DNS servers listed in <code>/etc/resolv.conf</code> in addition to any listed in <code>publish_dns_servers</code>.</p>
 </div>
       
     </li>
@@ -721,7 +723,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::publish_workstation</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::publish_workstation</tt>)</em>
       
       
         &mdash;
@@ -739,7 +741,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::ratelimit_burst</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::ratelimit_burst</tt>)</em>
       
       
         &mdash;
@@ -757,7 +759,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::ratelimit_interval_usec</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::ratelimit_interval_usec</tt>)</em>
       
       
         &mdash;
@@ -811,7 +813,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_core</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_core</tt>)</em>
       
       
         &mdash;
@@ -829,7 +831,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_data</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_data</tt>)</em>
       
       
         &mdash;
@@ -847,7 +849,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_fsize</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_fsize</tt>)</em>
       
       
         &mdash;
@@ -865,7 +867,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_nofile</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_nofile</tt>)</em>
       
       
         &mdash;
@@ -883,7 +885,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[2]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_nproc</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_nproc</tt>)</em>
       
       
     </li>
@@ -896,7 +898,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Integer[0]]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::rlimit_stack</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::rlimit_stack</tt>)</em>
       
       
     </li>
@@ -922,7 +924,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::use_ipv4</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::use_ipv4</tt>)</em>
       
       
     </li>
@@ -935,7 +937,7 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
         <span class='type'>(<tt>Optional[Boolean]</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$::avahi::params::use_ipv6</tt>)</em>
+        <em class="default">(defaults to: <tt>$avahi::params::use_ipv6</tt>)</em>
       
       
     </li>
@@ -943,10 +945,11 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
 </ul>
 
 
+
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="../puppet_defined_types/avahi_3A_3Aservice.html" title="puppet_defined_types::avahi::service (puppet_defined_type)">::avahi::service</a></span></li>
+      <li><span class='object_link'><a href="../puppet_defined_types/avahi_3A_3Aservice.html" title="puppet_defined_types::avahi::service (puppet_defined_type)">avahi::service</a></span></li>
     
   </ul>
 
@@ -1013,69 +1016,67 @@ in addition to any listed in <code>publish_dns_servers</code>.</p>
 123
 124
 125
-126
-127</pre>
+126</pre>
       </td>
       <td>
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 70</span>
 
 class avahi (
-  Stdlib::Absolutepath                      $conf_dir                        = $::avahi::params::conf_dir,
-  Stdlib::Absolutepath                      $dtd_dir                         = $::avahi::params::dtd_dir,
-  String                                    $group                           = $::avahi::params::group,
-  String                                    $package_name                    = $::avahi::params::package_name,
-  String                                    $policy_group                    = $::avahi::params::policy_group,
-  String                                    $service_name                    = $::avahi::params::service_name,
-  String                                    $user                            = $::avahi::params::user,
-  Boolean                                   $validate                        = $::avahi::params::validate,
-  Stdlib::Absolutepath                      $xmllint                         = $::avahi::params::xmllint,
-  Optional[Boolean]                         $add_service_cookie              = undef,
-  Optional[Array[String, 1]]                $allow_interfaces                = undef,
-  Optional[Boolean]                         $allow_point_to_point            = undef,
-  Optional[Array[Bodgitlib::Domain, 1]]     $browse_domains                  = undef,
-  Optional[Integer[0]]                      $cache_entries_max               = undef,
-  Optional[Boolean]                         $check_response_ttl              = undef,
-  Optional[Integer[0]]                      $clients_max                     = undef,
-  Optional[Array[String, 1]]                $deny_interfaces                 = undef,
-  Optional[Boolean]                         $disable_publishing              = undef,
-  Optional[Boolean]                         $disable_user_service_publishing = undef,
-  Optional[Boolean]                         $disallow_other_stacks           = undef,
-  Optional[String]                          $domain_name                     = undef,
-  Optional[Boolean]                         $enable_dbus                     = undef,
-  Optional[Boolean]                         $enable_reflector                = undef,
-  Optional[Boolean]                         $enable_wide_area                = $::avahi::params::enable_wide_area,
-  Optional[Integer[0]]                      $entries_per_entry_group_max     = undef,
-  Optional[String]                          $host_name                       = undef,
-  Optional[Integer[0]]                      $objects_per_client_max          = undef,
-  Optional[Boolean]                         $publish_aaaa_on_ipv4            = undef,
-  Optional[Boolean]                         $publish_a_on_ipv6               = undef,
-  Optional[Boolean]                         $publish_addresses               = undef,
-  Optional[Array[IP::Address::NoSubnet, 1]] $publish_dns_servers             = undef,
-  Optional[Boolean]                         $publish_domain                  = undef,
-  Optional[Boolean]                         $publish_hinfo                   = $::avahi::params::publish_hinfo,
-  Optional[Boolean]                         $publish_resolv_conf_dns_servers = undef,
-  Optional[Boolean]                         $publish_workstation             = $::avahi::params::publish_workstation,
-  Optional[Integer[0]]                      $ratelimit_burst                 = $::avahi::params::ratelimit_burst,
-  Optional[Integer[0]]                      $ratelimit_interval_usec         = $::avahi::params::ratelimit_interval_usec,
-  Optional[Boolean]                         $reflect_ipv                     = undef,
-  Optional[Integer[0]]                      $rlimit_as                       = undef,
-  Optional[Integer[0]]                      $rlimit_core                     = $::avahi::params::rlimit_core,
-  Optional[Integer[0]]                      $rlimit_data                     = $::avahi::params::rlimit_data,
-  Optional[Integer[0]]                      $rlimit_fsize                    = $::avahi::params::rlimit_fsize,
-  Optional[Integer[0]]                      $rlimit_nofile                   = $::avahi::params::rlimit_nofile,
-  Optional[Integer[2]]                      $rlimit_nproc                    = $::avahi::params::rlimit_nproc,
-  Optional[Integer[0]]                      $rlimit_stack                    = $::avahi::params::rlimit_stack,
-  Optional[Boolean]                         $use_iff_running                 = undef,
-  Optional[Boolean]                         $use_ipv4                        = $::avahi::params::use_ipv4,
-  Optional[Boolean]                         $use_ipv6                        = $::avahi::params::use_ipv6,
-) inherits ::avahi::params {
+  Stdlib::Absolutepath                              $conf_dir                        = $avahi::params::conf_dir,
+  Stdlib::Absolutepath                              $dtd_dir                         = $avahi::params::dtd_dir,
+  String                                            $group                           = $avahi::params::group,
+  String                                            $package_name                    = $avahi::params::package_name,
+  String                                            $policy_group                    = $avahi::params::policy_group,
+  String                                            $service_name                    = $avahi::params::service_name,
+  String                                            $user                            = $avahi::params::user,
+  Boolean                                           $validate                        = $avahi::params::validate,
+  Stdlib::Absolutepath                              $xmllint                         = $avahi::params::xmllint,
+  Optional[Boolean]                                 $add_service_cookie              = undef,
+  Optional[Array[String, 1]]                        $allow_interfaces                = undef,
+  Optional[Boolean]                                 $allow_point_to_point            = undef,
+  Optional[Array[Bodgitlib::Domain, 1]]             $browse_domains                  = $avahi::params::browse_domains,
+  Optional[Integer[0]]                              $cache_entries_max               = undef,
+  Optional[Boolean]                                 $check_response_ttl              = undef,
+  Optional[Integer[0]]                              $clients_max                     = undef,
+  Optional[Array[String, 1]]                        $deny_interfaces                 = undef,
+  Optional[Boolean]                                 $disable_publishing              = undef,
+  Optional[Boolean]                                 $disable_user_service_publishing = undef,
+  Optional[Boolean]                                 $disallow_other_stacks           = undef,
+  Optional[String]                                  $domain_name                     = undef,
+  Optional[Boolean]                                 $enable_dbus                     = undef,
+  Optional[Boolean]                                 $enable_reflector                = undef,
+  Optional[Boolean]                                 $enable_wide_area                = $avahi::params::enable_wide_area,
+  Optional[Integer[0]]                              $entries_per_entry_group_max     = undef,
+  Optional[String]                                  $host_name                       = undef,
+  Optional[Integer[0]]                              $objects_per_client_max          = undef,
+  Optional[Boolean]                                 $publish_aaaa_on_ipv4            = undef,
+  Optional[Boolean]                                 $publish_a_on_ipv6               = undef,
+  Optional[Boolean]                                 $publish_addresses               = undef,
+  Optional[Array[Stdlib::IP::Address::NoSubnet, 1]] $publish_dns_servers             = undef,
+  Optional[Boolean]                                 $publish_domain                  = undef,
+  Optional[Boolean]                                 $publish_hinfo                   = $avahi::params::publish_hinfo,
+  Optional[Boolean]                                 $publish_resolv_conf_dns_servers = undef,
+  Optional[Boolean]                                 $publish_workstation             = $avahi::params::publish_workstation,
+  Optional[Integer[0]]                              $ratelimit_burst                 = $avahi::params::ratelimit_burst,
+  Optional[Integer[0]]                              $ratelimit_interval_usec         = $avahi::params::ratelimit_interval_usec,
+  Optional[Boolean]                                 $reflect_ipv                     = undef,
+  Optional[Integer[0]]                              $rlimit_as                       = undef,
+  Optional[Integer[0]]                              $rlimit_core                     = $avahi::params::rlimit_core,
+  Optional[Integer[0]]                              $rlimit_data                     = $avahi::params::rlimit_data,
+  Optional[Integer[0]]                              $rlimit_fsize                    = $avahi::params::rlimit_fsize,
+  Optional[Integer[0]]                              $rlimit_nofile                   = $avahi::params::rlimit_nofile,
+  Optional[Integer[2]]                              $rlimit_nproc                    = $avahi::params::rlimit_nproc,
+  Optional[Integer[0]]                              $rlimit_stack                    = $avahi::params::rlimit_stack,
+  Optional[Boolean]                                 $use_iff_running                 = undef,
+  Optional[Boolean]                                 $use_ipv4                        = $avahi::params::use_ipv4,
+  Optional[Boolean]                                 $use_ipv6                        = $avahi::params::use_ipv6,
+) inherits avahi::params {
 
-  contain ::avahi::install
-  contain ::avahi::config
-  contain ::avahi::daemon
+  contain avahi::install
+  contain avahi::config
+  contain avahi::daemon
 
-  Class[&#39;::avahi::install&#39;] ~&gt; Class[&#39;::avahi::config&#39;]
-    ~&gt; Class[&#39;::avahi::daemon&#39;]
+  Class[&#39;avahi::install&#39;] ~&gt; Class[&#39;avahi::config&#39;] ~&gt; Class[&#39;avahi::daemon&#39;]
 }</pre>
       </td>
     </tr>
@@ -1084,9 +1085,7 @@ class avahi (
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 26 20:18:56 2017 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.7 (ruby-2.2.5).
+     Generated by <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>.
 </div>
 
     </div>
